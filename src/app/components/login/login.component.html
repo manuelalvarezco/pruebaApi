@@ -1,0 +1,52 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form [formGroup]="forma" (ngSubmit)="login()" class="login100-form validate-form flex-sb flex-w">
+
+                <span class="login100-form-title p-b-51">
+                    Login
+                </span>
+
+
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="email" name="email" formControlName="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                </div>
+                <div *ngIf="forma.controls['email'].invalid && (forma.controls['email'].dirty || forma.controls['email'].touched)" class="btn-block alert alert-danger">
+
+                    <div *ngIf="forma.controls['email'].errors?.required">
+                        El email es requerido
+                    </div>
+                    <div *ngIf="forma.controls['email'].errors?.pattern">
+                        Debe ser un correo válido
+                    </div>
+
+                </div>
+
+
+                <div class="wrap-input100 m-b-16" data-validate="Password is required">
+                    <input class="input100" type="password" name="password" formControlName="password" placeholder="Password">
+                    <span class="focus-input100"></span>
+                </div>
+                <div *ngIf="forma.controls['password'].invalid && (forma.controls['password'].dirty || forma.controls['password'].touched)" class="btn-block alert alert-danger">
+
+                    <div *ngIf="forma.controls['password'].errors?.required">
+                        El password es requerido
+                    </div>
+                    <div *ngIf="forma.controls['password'].errors?.minlength">
+                        Por lo menos 9 caracteres
+                    </div>
+
+                </div>
+
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+                        Ingresar
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
