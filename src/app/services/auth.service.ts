@@ -21,6 +21,16 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
+  getQuery(query:string){
+    const url=`https://api.phx.com.co/${query}`;
+
+    const headers = new HttpHeaders({
+      'Authorization' : 'Bearer token ' + localStorage.getItem('auth_token')
+    })
+
+    return this.http.get(url, {headers});
+  }
+
   login(usuario:UsuarioModel){
     
     let headers = new HttpHeaders({
@@ -45,6 +55,25 @@ export class AuthService {
         return resp;
       })
     )
+  }
+
+  getClientes(){
+
+    return this.getQuery('clients').pipe(
+      map((data:any) =>{
+        return data.clients
+      })
+    )
+
+
+  }
+
+  getCliente(id:string){
+    
+    return this.getQuery(`clients/${id}`)
+    .pipe( map((data:any) =>{
+      return data.client
+    }))
   }
 
   logout(){

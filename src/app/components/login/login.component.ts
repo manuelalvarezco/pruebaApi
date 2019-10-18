@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private _authService: AuthService, private router:Router) { }
 
   ngOnInit() {
-
+    //Validación del formulario
     this.forma = new FormGroup({
       'email' : new FormControl('', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")  ]),
       'password' : new FormControl('', [Validators.required, Validators.minLength(9)  ]),
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+    //método para realizar el logueo
   login(){
 
     Swal.fire({
@@ -39,16 +40,17 @@ export class LoginComponent implements OnInit {
       text:'Espere por favor'
     });
     
+        //llamado del método login del servicio      
     this._authService.login(this.forma.value)
       .subscribe( data => {
         Swal.close()
 
+        //redirección a la vista dashboard si los datos son correctos
         this.router.navigateByUrl('/dashboard')
-
 
         console.log(data)
       },(err)=>{
-        
+        //Alerta informando el error       
         Swal.fire({
           type:'error',
           title:'Usuario o contraseña incorrectos',
@@ -57,7 +59,6 @@ export class LoginComponent implements OnInit {
 
 
       })
-    console.log(this.forma.value)
   }
 
 }

@@ -1,0 +1,11 @@
+<mat-toolbar class="animated fadeIn fast">
+    Prueba Api
+
+    <div class="ml-auto">
+        <img src="assets/img/no-image.png" width=30px; alt="" style="border-radius: 50%;">
+    </div>
+    <button mat-button [matMenuTriggerFor]="aboveMenu">Settings</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+        <button (click)="logout()" mat-menu-item>Logout</button>
+    </mat-menu>
+</mat-toolbar>

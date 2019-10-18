@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+
+.list-container {
+    height: 500px;
+}
+
+.usuario {
+    width: 40px;
+    border-radius: 15%;
+}
