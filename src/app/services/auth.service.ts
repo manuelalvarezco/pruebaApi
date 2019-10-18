@@ -17,6 +17,8 @@ export class AuthService {
   // 'https://api.phx.com.co/login';
   // https://api.phx.com.co/clients?page=1&per_page=10
 
+  // Authorization : Bearer token $token
+
   constructor(private http:HttpClient) { }
 
   login(usuario:UsuarioModel){
@@ -46,7 +48,7 @@ export class AuthService {
   }
 
   logout(){
-
+    localStorage.removeItem('auth_token');
   }
 
   private guardarToken(auth_token:string){
